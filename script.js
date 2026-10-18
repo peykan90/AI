@@ -2,104 +2,130 @@
 const form = document.getElementById("chatForm");
 const input = document.getElementById("userInput");
 const messages = document.getElementById("messages");
-const suggestions = document.querySelector(".suggestions");
+const clearButton = document.getElementById("clear");
 
 function normalize(text) {
   return text
     .toLowerCase()
     .trim()
-    .replace(/[؟?!.,،؛]/g, "");
+    .replace(/[؟?!.,،؛]/g, "")
+    .replace(/ي/g, "ی")
+    .replace(/ك/g, "ک");
 }
 
 function getReply(message) {
-  const m = normalize(message);
+  const text = normalize(message);
 
-  if (
-    m.includes("salam") ||
-    m.includes("slm") ||
-    m.includes("سلام")
-  ) {
-    return "Salam rafiq! 😎 Khoobi? Che komaki az dastam bar miad?";
+  if (text.includes("سلام") || text.includes("درود")) {
+    return "سلام رفیق! 😎 خوش اومدی به پیکان. چطور می‌تونم کمکت کنم؟";
   }
 
   if (
-    m.includes("khobi") ||
-    m.includes("khoobi") ||
-    m.includes("خوبی") ||
-    m.includes("chetori")
+    text.includes("خوبی") ||
+    text.includes("چطوری") ||
+    text.includes("حالت چطوره")
   ) {
-    return "Man khoobam, merci! 💙 To chetori?";
+    return "ممنون که پرسیدی! 💙 من آماده‌ام باهات گفتگو کنم. تو چطوری؟";
   }
 
   if (
-    m.includes("اسم") ||
-    m.includes("کی هستی") ||
-    m.includes("who are you") ||
-    m.includes("name")
+    text.includes("خودت رو معرفی") ||
+    text.includes("اسم") ||
+    text.includes("کی هستی") ||
+    text.includes("معرفی")
   ) {
-    return "Man PEYKAN AI hastam! Yek chatbot demo ke ba HTML, CSS va JavaScript sakhtim. 🚀";
+    return "من PEYKAN AI هستم؛ یک دستیار گفتگویی آزمایشی که با HTML، CSS و JavaScript ساخته شده. 🚀";
   }
 
   if (
-    m.includes("کمک") ||
-    m.includes("help") ||
-    m.includes("چه کار")
+    text.includes("کمک") ||
+    text.includes("چه کار") ||
+    text.includes("قابلیت") ||
+    text.includes("بلدی")
   ) {
-    return "Mitunam ba soalhaye sade, salam-o-ahvalporsi va chand soal-e amuzeshi komaket konam. Baraye javabaye pishrafte bayad yek model-e AI vasl konim.";
+    return "در این نسخه می‌تونم به بعضی سؤال‌های ساده جواب بدم، احوال‌پرسی کنم و چند موضوع آموزشی رو توضیح بدم. برای پاسخ‌های هوشمندتر باید یک مدل هوش مصنوعی واقعی به من متصل بشه.";
+  }
+
+  if (text.includes("پایتون")) {
+    return "پایتون یکی از زبان‌های محبوب برنامه‌نویسی برای ساخت هوش مصنوعیه. 🐍 باهاش می‌تونیم نسخه پیشرفته‌تری از پیکان بسازیم.";
   }
 
   if (
-    m.includes("python") ||
-    m.includes("پایتون")
+    text.includes("دانستنی") ||
+    text.includes("حقیقت") ||
+    text.includes("جالب")
   ) {
-    return "Python yek zabane programming-e kheili khoob baraye yadgiri AI hast! 🐍";
+    return "یک دانستنی جالب! 🪐 سیاره زهره برای یک دور چرخش کامل به دور خودش، زمان بیشتری از یک دور گردش به دور خورشید نیاز داره.";
   }
 
   if (
-    m.includes("حقیقت") ||
-    m.includes("جالب") ||
-    m.includes("fact")
+    text.includes("ممنون") ||
+    text.includes("مرسی") ||
+    text.includes("متشکرم")
   ) {
-    return "Yek fact-e jaleb: rooz-e sayyare Venus az sal-e an toolani-tare! 🪐";
+    return "خواهش می‌کنم رفیق! 💙 هر وقت کمکی خواستی، من اینجام.";
   }
 
   if (
-    m.includes("ممنون") ||
-    m.includes("مرسی") ||
-    m.includes("merci") ||
-    m.includes("thanks")
+    text.includes("خداحافظ") ||
+    text.includes("فعلا") ||
+    text.includes("بای")
   ) {
-    return "Ghorboonet rafiq! 💙";
+    return "فعلاً رفیق! 👋 امیدوارم روز خوبی داشته باشی.";
   }
 
   if (
-    m.includes("خداحافظ") ||
-    m.includes("bye")
+    text.includes("هوش مصنوعی") ||
+    text.includes("هوشمند")
   ) {
-    return "Ta bad rafiq! Movafagh bashi. 👋";
+    return "برای تبدیل پیکان به یک دستیار هوشمند واقعی، باید یک مدل زبانی رو از طریق یک سرور به سایت وصل کنیم. این نسخه فعلاً نمایشی و قانون‌محوره.";
   }
 
-  return "Jalebe! ✨ Mituni soal ro sade-tar beporsi. In noskhe demo hast va hanooz be yek model-e AI-e vagheyi vasl nashode.";
+  if (
+    text.includes("سایت") ||
+    text.includes("برنامه نویسی") ||
+    text.includes("برنامه‌نویسی") ||
+    text.includes("کد")
+  ) {
+    return "این سایت با سه فناوری ساخته شده: HTML برای ساختار، CSS برای طراحی و JavaScript برای عملکرد و پاسخ‌گویی چت. 💻";
+  }
+
+  return "سؤال جالبیه! ✨ هنوز جواب همه سؤال‌ها رو نمی‌دونم. می‌تونی درباره پایتون، برنامه‌نویسی یا قابلیت‌های من سؤال بپرسی.";
 }
 
 function addMessage(text, type) {
-  const message = document.createElement("div");
-  message.className = `message ${type}`;
+  const row = document.createElement("div");
+  row.className = `message-row ${type}-row`;
 
-  // متن کاربر به‌صورت امن نمایش داده می‌شود.
-  message.textContent = text;
-  messages.appendChild(message);
+  const avatar = document.createElement("div");
+  avatar.className = "message-avatar";
+  avatar.textContent = type === "bot" ? "P" : "شما";
+
+  const content = document.createElement("div");
+  content.className = "message-content";
+
+  const sender = document.createElement("span");
+  sender.className = "sender";
+  sender.textContent = type === "bot" ? "PEYKAN AI" : "شما";
+
+  const bubble = document.createElement("div");
+  bubble.className = `message ${type}`;
+  bubble.textContent = text;
+
+  content.append(sender, bubble);
+  row.append(avatar, content);
+  messages.appendChild(row);
 
   messages.scrollTop = messages.scrollHeight;
 }
 
 function sendMessage(text) {
   const value = text.trim();
+
   if (!value) return;
 
-  if (suggestions) {
-    suggestions.remove();
-  }
+  const suggestions = document.getElementById("suggestions");
+  if (suggestions) suggestions.remove();
 
   addMessage(value, "user");
   input.value = "";
@@ -110,22 +136,29 @@ function sendMessage(text) {
   }, 350);
 }
 
-form.addEventListener("submit", (event) => {
+form.addEventListener("submit", function(event) {
   event.preventDefault();
   sendMessage(input.value);
 });
 
-document.querySelectorAll("[data-message]").forEach((button) => {
-  button.addEventListener("click", () => {
+document.querySelectorAll("[data-message]").forEach(button => {
+  button.addEventListener("click", function() {
     sendMessage(button.dataset.message);
   });
 });
 
-document.getElementById("clear").addEventListener("click", () => {
+clearButton.addEventListener("click", function() {
   messages.replaceChildren();
+
+  const dateLabel = document.createElement("div");
+  dateLabel.className = "date-label";
+  dateLabel.textContent = "شروع گفتگوی جدید";
+  messages.appendChild(dateLabel);
+
   addMessage(
-    "Salam rafiq! 👋 من PEYKAN AI هستم. از کجا شروع کنیم؟",
+    "سلام رفیق! 👋 من پیکان هستم. چه چیزی دوست داری بدونی؟",
     "bot"
   );
+
   input.focus();
 });
