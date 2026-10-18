@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PEYKAN AI</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="logo" href="#">PEYKAN <span>AI</span></a>
+    <div class="status"><i></i> آنلاین</div>
+    <button id="clear">گفتگوی جدید ↻</button>
+  </header>
+
+  <main class="layout">
+    <section class="hero">
+      <div class="orbit"></div>
+      <div class="planet">
+        <div class="planet-light"></div>
+      </div>
+
+      <p class="eyebrow">A NEW KIND OF INTELLIGENCE</p>
+      <h1>فراتر از <span>تصور.</span></h1>
+      <p class="subtitle">به دنیای PEYKAN AI خوش آمدی.</p>
+    </section>
+
+    <section class="chat">
+      <div class="chat-head">
+        <div class="avatar">P</div>
+        <div>
+          <strong>دستیار PEYKAN</strong>
+          <small><i></i> آماده گفتگو</small>
+        </div>
+      </div>
+
+      <div class="messages" id="messages" aria-live="polite">
+        <div class="message bot">
+          Salam rafiq! 👋 من PEYKAN AI هستم.
+          می‌تونی فارسی یا فینگلیش پیام بدی!
+        </div>
+      </div>
+
+      <div class="suggestions">
+        <button data-message="Salam, khobi?">Salam, khobi?</button>
+        <button data-message="تو کی هستی؟">تو کی هستی؟</button>
+        <button data-message="یک حقیقت جالب بگو">یک حقیقت جالب</button>
+      </div>
+
+      <form id="chatForm">
+        <input id="userInput" placeholder="پیامت رو بنویس..." autocomplete="off" maxlength="1000">
+        <button class="send" type="submit" aria-label="ارسال">➤</button>
+      </form>
+      <p class="note">نسخهٔ نمایشی · پاسخ‌های قانون‌محور</p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
