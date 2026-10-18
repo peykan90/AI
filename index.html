@@ -4,57 +4,128 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PEYKAN AI</title>
+  <meta name="theme-color" content="#050914">
+  <meta name="description" content="پیکان ای‌آی؛ فضایی برای گفتگو، یادگیری و کشف ایده‌های تازه">
+  <title>PEYKAN AI | دستیار هوشمند</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+  <div class="space-background">
+    <div class="stars"></div>
+    <div class="stars stars-two"></div>
+  </div>
+
   <header class="topbar">
-    <a class="logo" href="#">PEYKAN <span>AI</span></a>
-    <div class="status"><i></i> آنلاین</div>
-    <button id="clear">گفتگوی جدید ↻</button>
+    <a class="logo" href="#" aria-label="صفحه اصلی پیکان">
+      <span class="logo-symbol">P</span>
+      <span>PEYKAN <b>AI</b></span>
+    </a>
+
+    <div class="status">
+      <span class="status-dot"></span>
+      آماده به کار
+    </div>
+
+    <button id="clear" class="new-chat">گفتگوی جدید ↻</button>
   </header>
 
   <main class="layout">
+
     <section class="hero">
-      <div class="orbit"></div>
+      <div class="orbit orbit-one"></div>
+      <div class="orbit orbit-two"></div>
+
       <div class="planet">
-        <div class="planet-light"></div>
+        <div class="planet-surface"></div>
+        <div class="planet-shade"></div>
+        <div class="planet-atmosphere"></div>
       </div>
 
-      <p class="eyebrow">A NEW KIND OF INTELLIGENCE</p>
-      <h1>فراتر از <span>تصور.</span></h1>
-      <p class="subtitle">به دنیای PEYKAN AI خوش آمدی.</p>
+      <div class="planet-label">
+        <span class="status-dot"></span>
+        هسته مرکزی پیکان
+      </div>
+
+      <div class="hero-text">
+        <p class="eyebrow">آینده از یک گفتگو شروع می‌شود</p>
+        <h1>فراتر از <span>تصور</span></h1>
+        <p class="subtitle">
+          فکر کن، یاد بگیر و ایده‌های تازه رو کشف کن.
+          به دنیای پیکان خوش اومدی.
+        </p>
+      </div>
+
+      <div class="floating-card">
+        <span class="card-icon">✦</span>
+        <div>
+          <strong>فضای هوشمند</strong>
+          <small>آماده برای گفتگو</small>
+        </div>
+      </div>
     </section>
 
-    <section class="chat">
-      <div class="chat-head">
-        <div class="avatar">P</div>
-        <div>
+    <section class="chat-panel">
+
+      <div class="chat-header">
+        <div class="bot-avatar">P</div>
+
+        <div class="chat-information">
           <strong>دستیار PEYKAN</strong>
-          <small><i></i> آماده گفتگو</small>
+          <span><i></i> آماده گفتگو با شما</span>
         </div>
+
+        <div class="header-star">✦</div>
       </div>
 
       <div class="messages" id="messages" aria-live="polite">
-        <div class="message bot">
-          Salam rafiq! 👋 من PEYKAN AI هستم.
-          می‌تونی فارسی یا فینگلیش پیام بدی!
+        <div class="date-label">شروع گفتگو</div>
+
+        <div class="message-row bot-row">
+          <div class="message-avatar">P</div>
+          <div class="message-content">
+            <span class="sender">PEYKAN AI</span>
+            <div class="message bot">
+              سلام رفیق به پیکان خوش اومدی.
+              من یک دستیار گفتگویی آزمایشی هستم.
+              هر سؤالی داری بپرس تا با هم شروع کنیم!
+            </div>
+          </div>
+        </div>
+
+        <div class="suggestions" id="suggestions">
+          <button type="button" data-message="سلام، خوبی؟">سلام، خوبی؟</button>
+          <button type="button" data-message="خودت رو معرفی کن">معرفی دستیار</button>
+          <button type="button" data-message="یک دانستنی جالب بگو">دانستنی جالب</button>
         </div>
       </div>
 
-      <div class="suggestions">
-        <button data-message="Salam, khobi?">Salam, khobi?</button>
-        <button data-message="تو کی هستی؟">تو کی هستی؟</button>
-        <button data-message="یک حقیقت جالب بگو">یک حقیقت جالب</button>
-      </div>
-
-      <form id="chatForm">
-        <input id="userInput" placeholder="پیامت رو بنویس..." autocomplete="off" maxlength="1000">
-        <button class="send" type="submit" aria-label="ارسال">➤</button>
+      <form class="composer" id="chatForm">
+        <input
+          id="userInput"
+          type="text"
+          placeholder="پیامت رو اینجا بنویس..."
+          autocomplete="off"
+          maxlength="1000"
+          aria-label="متن پیام"
+        >
+        <button class="send-button" type="submit" aria-label="ارسال پیام">
+          ➤
+        </button>
       </form>
-      <p class="note">نسخهٔ نمایشی · پاسخ‌های قانون‌محور</p>
+
+      <p class="disclaimer">
+        نسخه آزمایشی پیکان · پاسخ‌ها از پیش تعریف شده‌اند
+      </p>
+
     </section>
   </main>
+
+  <footer>
+    <span>ساخته شده با علاقه</span>
+    <span class="footer-star">✦</span>
+    <span>PEYKAN AI © ۲۰۲۶</span>
+  </footer>
 
   <script src="script.js"></script>
 </body>
